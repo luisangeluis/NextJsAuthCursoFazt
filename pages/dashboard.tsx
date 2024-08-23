@@ -10,6 +10,7 @@ const DashboardPage = () => {
     username: "",
   });
   const router = useRouter();
+
   const getProfile = async () => {
     try {
       const res = await axios.get("/api/profile");
@@ -19,15 +20,14 @@ const DashboardPage = () => {
     }
   };
 
-  const logout=async()=>{
-    try{
+  const logout = async () => {
+    try {
       await axios.post("/api/auth/logout");
-      
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
     router.push("/login");
-  }
+  };
 
   return (
     <div>
@@ -35,7 +35,6 @@ const DashboardPage = () => {
       <pre>{JSON.stringify(user, null, 2)}</pre>
       <button onClick={getProfile}>Get profile</button>
       <button onClick={logout}>Logout</button>
-
     </div>
   );
 };
